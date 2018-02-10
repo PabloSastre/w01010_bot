@@ -9,6 +9,6 @@ With voice support ([node-opus](https://www.npmjs.com/package/node-opus)): `npm 
 
 ## Usefull commands for Windows
 
-Install all needed dependencies to run node-opus :npm install --global --production windows-build-tools
+Install all needed dependencies to run node-opus : `npm install --global --production windows-build-tools`
 
 

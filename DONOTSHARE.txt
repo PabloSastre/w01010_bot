@@ -1,0 +1,6 @@
+clientID:411834253261930498
+clientSecret: OYjLkVw9YwNOrvJpYyGMCz8zHJHPna-q
+
+#bot
+username: W01010_bot#2223
+token: NDExODM0MjUzMjYxOTMwNDk4.DWBeLw.hCCKhH_VXwjoBH7Y3NvEqiSbKF0
