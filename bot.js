@@ -36,12 +36,28 @@ bot.on('message', async message => {
   	
   	
 	}
-}
+} 
 
-
-  
+message.delete();
 
 });
+
+bot.on('voiceStateUpdate', (oldMember, newMember) => {
+  let newUserChannel = newMember.voiceChannel
+  let oldUserChannel = oldMember.voiceChannel
+
+
+  if(oldUserChannel === undefined && newUserChannel !== undefined) {
+  		console.log("new user")
+
+     // User Joins a voice channel
+
+  } else if(newUserChannel === undefined){
+  		console.log("new user")
+    // User leaves a voice channel
+
+  }
+})
 
 bot.login(botSettings.token);
 
