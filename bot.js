@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
-const botSettings = require("./botSettings.json");
+const prefix= "!";
 const ytdl = require('ytdl-core');
 const bot = new Discord.Client( {disableEveryone: true} );
-const prefix= botSettings.prefix;
 
 
 bot.on('ready', async () => {
@@ -12,9 +11,17 @@ bot.on('ready', async () => {
 bot.on('message', async message => {
 
   if(message.author.bot) return;
+  if (message.content === `${prefix}wolohelp`){
+	  let embed = new Discord.MessageEmbed()
+	.setAuthor(message.author.username)
+	.setDescription('Menuda berza arrastras, a ver: \n \t -!wolocome : El bot se une a tu canal de voz ( debes estar previamente en un canal de voz) \n \t -!wololeave: el bot avandona el canal de voz en el que esté. \n \t -!numero: simula los sonidos del chat de aoe2, hay sonidos del !1 al !43.  wololo es el !99');
+	message.channel.send(embed);
+	message.delete();
+}
   if (message.content === `${prefix}wololeave`){
 		  message.member.voice.channel.leave();
 		  setWololo(false);
+		  message.delete();
   }
   if (message.content === `${prefix}wolocome`){
   	let embed = new Discord.MessageEmbed()
@@ -25,7 +32,8 @@ bot.on('message', async message => {
   	const dispatcher = connection.play(ytdl(`https://www.youtube.com/watch?v=lKQBTuXEWo0`, { filter : 'audioonly' }), {
   		volume: 0.5
 		});
-  	setWololo(true);
+	  setWololo(true);
+	  message.delete();
   	
   }
   if(wololo){
