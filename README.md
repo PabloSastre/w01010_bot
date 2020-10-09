@@ -11,4 +11,6 @@ With voice support ([node-opus](https://www.npmjs.com/package/node-opus)): `npm 
 
 Install all needed dependencies to run node-opus : `npm install --global --production windows-build-tools`
 
+npm install --global windows-build-tools@4.0.0
+
 

@@ -13,32 +13,31 @@ bot.on('message', async message => {
 
   if(message.author.bot) return;
   if (message.content === `${prefix}wololeave`){
-  		message.member.voiceChannel.leave();
+		  message.member.voice.channel.leave();
+		  setWololo(false);
   }
-  if (message.content === `${prefix}wololo`){
-  	let embed = new Discord.RichEmbed()
+  if (message.content === `${prefix}wolocome`){
+  	let embed = new Discord.MessageEmbed()
   		.setAuthor(message.author.username)
   		.setDescription("Mande?");
   	message.channel.send(embed);
-  	const connection = await message.member.voiceChannel.join();
-  	const dispatcher = connection.playStream(ytdl(`https://www.youtube.com/watch?v=lKQBTuXEWo0`, { filter : 'audioonly' }), {
+  	const connection = await message.member.voice.channel.join();
+  	const dispatcher = connection.play(ytdl(`https://www.youtube.com/watch?v=lKQBTuXEWo0`, { filter : 'audioonly' }), {
   		volume: 0.5
 		});
   	setWololo(true);
   	
   }
   if(wololo){
-  	if(message.content.match('\\d{1,2}(?!\\d)|100')){ 
-  			const connection = await message.member.voiceChannel.join(); 		
-  			const dispatcher = connection.playFile(`./sounds/${message.content}.mp3`, {
-  			volume: 0.5
-			});
-  	
+  	if(message.content.match('(!)[1-9][0-9]?')){ 
+			const connection = await message.member.voice.channel.join(); 
+  			const dispatcher = connection.play(`./sounds/${message.content}.mp3`);
+			message.delete();
   	
 	}
 } 
 
-message.delete();
+
 
 });
 
@@ -53,7 +52,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
      // User Joins a voice channel
 
   } else if(newUserChannel === undefined){
-  		console.log("new user")
+  		console.log("user left")
     // User leaves a voice channel
 
   }
