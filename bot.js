@@ -58,7 +58,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
   }
 })
 
-bot.login(botSettings.token);
+bot.login(process.env.BOT_TOKEN);
 
 var wololo=false;
 function setWololo(w){
